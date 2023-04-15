@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 		return -1;
 	}
 
-	read_data(data_file, a_sensors, &sensor_cnt);
+	a_sensors = read_data(data_file, &sensor_cnt);
 
 	fclose(data_file);
 
@@ -42,6 +42,7 @@ int main(int argc, char const *argv[])
 		case 2:
 			break;
 		case 3:
+			exit(0);
 			break;
 		default:
 			break;

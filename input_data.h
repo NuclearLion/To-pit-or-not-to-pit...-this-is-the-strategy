@@ -8,6 +8,6 @@
 
 #include "structs.h"
 
-void read_data(FILE *data_f, sensor *a_sensors, int *sens_cnt);
+sensor *read_data(FILE *data_f, int *sens_cnt);
 
 #endif

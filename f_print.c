@@ -24,19 +24,23 @@ void f_print(sensor *a_sensors, int dim)
 void print_tire_sens(tire_sensor sens)
 {
     printf("Tire Sensor\n");
-    printf("Pressure: %f\n", sens.pressure);
-    printf("Temperature: %f\n", sens.temperature);
-    printf("Wear Level: %d\n", sens.wear_level);
+    printf("Pressure: %0.2f\n", sens.pressure);
+    printf("Temperature: %0.2f\n", sens.temperature);
+    printf("Wear Level: %d%%\n", sens.wear_level);
+    
     //asta vedem plm
-    printf("Performance Score: <computed score>/Performance Score: Not Calculated");
+    if (sens.performace_score >= 1 && sens.performace_score <= 10)
+        printf("Performance Score: %d\n", sens.performace_score);
+    else
+        printf("Performance Score: Not Calculated\n");
 }
 
 void print_pmu_sens(power_management_unit sens)
 {
     printf("Power Management Unit\n");
-    printf("Voltage: %f\n", sens.voltage);
-    printf("Current: %f\n", sens.current);
-    printf("Power Consumption: %f\n", sens.power_consumption);
-    printf("Energy Regen: %d\n", sens.energy_regen);
-    printf("Energy Storage: %d\n", sens.energy_storage);
+    printf("Voltage: %0.2f\n", sens.voltage);
+    printf("Current: %0.2f\n", sens.current);
+    printf("Power Consumption: %0.2f\n", sens.power_consumption);
+    printf("Energy Regen: %d%%\n", sens.energy_regen);
+    printf("Energy Storage: %d%%\n", sens.energy_storage);
 }
