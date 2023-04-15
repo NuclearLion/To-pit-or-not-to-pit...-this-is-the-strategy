@@ -3,6 +3,7 @@
 #include "utils.h"
 #include "structs.h"
 #include "input_data.h"
+#include "f_print.h"
 
 int main(int argc, char const *argv[])
 {
@@ -10,8 +11,14 @@ int main(int argc, char const *argv[])
 	sensor *a_sensors = NULL;
 	int sensor_cnt = 0;
 
-	char *file_name = (char *)calloc(strlen(argv[1]) + 1, sizeof(char)); //+1 bcs of \0
-	strcpy(file_name, argv[1]);
+	if (argc != 2) {
+		fprintf(stderr, "Please include filename!\n");
+		return 2;
+	}
+
+	int len = strlen(argv[1]);
+	char *file_name = (char *)calloc(len + 1, sizeof(char)); //+1 bcs of \0
+	strncpy(file_name, argv[1], len + 1);
 
 	FILE *data_file = fopen(file_name, "rb");
 	if (!data_file) {
@@ -28,7 +35,7 @@ int main(int argc, char const *argv[])
 		switch (hash(command))
 		{
 		case 0:
-			
+			f_print(a_sensors, sensor_cnt);
 			break;
 		case 1:
 			break;

@@ -5,6 +5,10 @@
 
 #include "structs.h"
 
-void print_sens(sensor sens);
+void f_print(sensor *a_sensors, int dim);
+
+void print_tire_sens(tire_sensor sens);
+
+void print_pmu_sens(power_management_unit sens);
 
 #endif
