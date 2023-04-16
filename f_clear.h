@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #ifndef _F_CLEAR_H_
 #define _F_CLEAR_H_
 

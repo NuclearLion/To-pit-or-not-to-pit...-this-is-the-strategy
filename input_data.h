@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #ifndef _INPUT_DATA_H_
 #define _INPUT_DATA_H_
 

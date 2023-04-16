@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #include "utils.h"
 
 int hash(char *command)

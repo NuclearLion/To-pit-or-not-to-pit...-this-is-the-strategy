@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #include "free_all.h"
 
 void free_all(sensor **a_sensors, int dim)

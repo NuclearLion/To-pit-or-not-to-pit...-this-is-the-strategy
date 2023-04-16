@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #include "f_analyze.h"
 
 void analyze(sensor *a_sensors, int dim)

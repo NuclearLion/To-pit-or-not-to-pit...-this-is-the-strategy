@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #ifndef _FREE_ALL_H_
 #define _FREE_ALL_H_
 

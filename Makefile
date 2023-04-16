@@ -35,3 +35,6 @@ run: build
 
 clean:
 	rm -f *.o main
+
+pack:
+	zip -FSr 311CA_StaicuDan-Dominic_Tema1.zip README.md Makefile *.c *.h

@@ -1,3 +1,4 @@
+//Copyright Dan-Dominic Staicu 311CA (dando.ds11@gmail.com) 2023
 #include "input_data.h"
 
 sensor *read_data(FILE *data_f, int *sens_cnt)
