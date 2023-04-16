@@ -1,6 +1,6 @@
 #include "f_print.h"
 
-void f_print(sensor *a_sensors, int dim)
+void print(sensor *a_sensors, int dim)
 {
     int index = 0;
     scanf("%d", &index);

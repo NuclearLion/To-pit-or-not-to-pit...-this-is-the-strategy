@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "utils.h"
-#include "structs.h"
 #include "input_data.h"
 #include "f_print.h"
 #include "f_analyze.h"
+#include "f_clear.h"
 
 int main(int argc, char const *argv[])
 {
@@ -36,12 +34,13 @@ int main(int argc, char const *argv[])
 		switch (hash(command))
 		{
 		case 0:
-			f_print(a_sensors, sensor_cnt);
+			print(a_sensors, sensor_cnt);
 			break;
 		case 1:
 			analyze(a_sensors, sensor_cnt);
 			break;
 		case 2:
+			clear(&a_sensors, &sensor_cnt);
 			break;
 		case 3:
 			exit(0);

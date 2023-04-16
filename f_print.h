@@ -6,7 +6,7 @@
 
 #include "structs.h"
 
-void f_print(sensor *a_sensors, int dim);
+void print(sensor *a_sensors, int dim);
 
 void print_tire_sens(tire_sensor sens);
 
