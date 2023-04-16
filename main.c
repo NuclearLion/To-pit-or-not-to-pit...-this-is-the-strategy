@@ -4,6 +4,7 @@
 #include "structs.h"
 #include "input_data.h"
 #include "f_print.h"
+#include "f_analyze.h"
 
 int main(int argc, char const *argv[])
 {
@@ -38,6 +39,7 @@ int main(int argc, char const *argv[])
 			f_print(a_sensors, sensor_cnt);
 			break;
 		case 1:
+			analyze(a_sensors, sensor_cnt);
 			break;
 		case 2:
 			break;
