@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
 	sensor *a_sensors = NULL;
 	int sensor_cnt = 0;
 
+	//check if an argument was inputed
 	if (argc != 2) {
 		fprintf(stderr, "Please include filename!\n");
 		return 2;
@@ -28,11 +29,14 @@ int main(int argc, char const *argv[])
 		return -1;
 	}
 
+	//init the sensor array with the data from the binary file
 	a_sensors = read_data(data_file, &sensor_cnt);
 
+	//free the mem used for init
 	free(file_name);
 	fclose(data_file);
 
+	//while there are commands from input
 	while (scanf("%s", command)) {
 		switch (hash(command)) {
 		case 0:

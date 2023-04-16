@@ -11,6 +11,7 @@
 
 #define OP_CNT 8
 
+//execute the analyze command
 void analyze(sensor *a_sensors, int dim);
 
 #endif

@@ -6,6 +6,7 @@
 
 #include "structs.h"
 
+//execute the free of exit's command
 void free_all(sensor **a_sensors, int dim);
 
 #endif

@@ -9,8 +9,10 @@
 
 #include "structs.h"
 
+//read data from the given binary file and save it in the array
 sensor *read_data(FILE *data_f, int *sens_cnt);
 
+//compare function used for qsort
 int cmp_enum(const void *a, const void *b);
 
 #endif

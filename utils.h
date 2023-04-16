@@ -4,6 +4,7 @@
 
 #include <string.h>
 
+//convert strings of commands to digits in order to use swtich statement in main
 int hash(char *command);
 
 #endif

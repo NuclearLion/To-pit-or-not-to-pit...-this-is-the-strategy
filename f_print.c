@@ -6,11 +6,13 @@ void print(sensor *a_sensors, int dim)
 	int index = 0;
 	scanf("%d", &index);
 
+	//check if index is inside
 	if (index >= dim || index < 0) {
 		printf("Index not in range!\n");
 		return;
 	}
 
+	//check type of sensor and print accordingly
 	sensor sen = a_sensors[index];
 	if (sen.sensor_type == 0) {
 		tire_sensor *sens = (tire_sensor *)sen.sensor_data;
@@ -19,6 +21,7 @@ void print(sensor *a_sensors, int dim)
 		power_management_unit *sens = (power_management_unit *)sen.sensor_data;
 		print_pmu_sens(*sens);
 	} else {
+		//if for anuy reason the type is different from 0/1 print an error
 		fprintf(stderr, "unknown sensor type\n");
 	}
 }
