@@ -76,5 +76,19 @@ sensor *read_data(FILE *data_f, int *sens_cnt)
         fread(a_sensors[i].operations_idxs, sizeof(int), nr_op, data_f);
     }
 
+    qsort(a_sensors, *sens_cnt, sizeof(sensor), cmp_enum);
+
     return a_sensors;
+}
+
+int cmp_enum(const void *a, const void *b)
+{
+    const sensor *sens_a = (const sensor *)a;
+    const sensor *sens_b = (const sensor *)b;
+
+    if (sens_a->sensor_type < sens_b->sensor_type)
+        return 1;
+    else if (sens_a->sensor_type > sens_b->sensor_type)
+        return -1;
+    return 0;
 }

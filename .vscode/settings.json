@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "f_print.h": "c",
+        "structs.h": "c"
+    }
+}

@@ -10,4 +10,6 @@
 
 sensor *read_data(FILE *data_f, int *sens_cnt);
 
+int cmp_enum(const void *a, const void *b);
+
 #endif

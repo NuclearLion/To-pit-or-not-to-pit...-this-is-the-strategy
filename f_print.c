@@ -44,3 +44,7 @@ void print_pmu_sens(power_management_unit sens)
     printf("Energy Regen: %d%%\n", sens.energy_regen);
     printf("Energy Storage: %d%%\n", sens.energy_storage);
 }
+
+
+
+
