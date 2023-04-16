@@ -3,7 +3,7 @@
 #include "f_print.h"
 #include "f_analyze.h"
 #include "f_clear.h"
-#include "free_and_exit.h"
+#include "free_all.h"
 
 int main(int argc, char const *argv[])
 {
@@ -33,8 +33,7 @@ int main(int argc, char const *argv[])
 	fclose(data_file);
 
 	while (scanf("%s", command)) {
-		switch (hash(command))
-		{
+		switch (hash(command)) {
 		case 0:
 			print(a_sensors, sensor_cnt);
 			break;
@@ -45,19 +44,13 @@ int main(int argc, char const *argv[])
 			clear(&a_sensors, &sensor_cnt);
 			break;
 		case 3:
-			for (int i = 0; i < sensor_cnt; ++i) {
-				free(a_sensors[i].operations_idxs);
-				free(a_sensors[i].sensor_data);
-    		}
-
-    		free(a_sensors);
-
+			free_all(&a_sensors, sensor_cnt);
 			return 0;
 		default:
 			fprintf(stderr, "wrong command\n");
 			break;
 		}
 	}
-	
+
 	return 0;
 }

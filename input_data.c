@@ -2,68 +2,70 @@
 
 sensor *read_data(FILE *data_f, int *sens_cnt)
 {
-    *sens_cnt = 0;
-    fread(sens_cnt, sizeof(int), 1, data_f);
+	*sens_cnt = 0;
+	fread(sens_cnt, sizeof(int), 1, data_f);
 
-    sensor *a_sensors = calloc(*sens_cnt, sizeof(sensor));
-    if (!a_sensors) {
-        fprintf(stderr, "a_sensors calloc failed\n");
-        exit(-1);
-    }
+	sensor *a_sensors = calloc(*sens_cnt, sizeof(sensor));
+	if (!a_sensors) {
+		fprintf(stderr, "a_sensors calloc failed\n");
+		exit(-1);
+	}
 
-    for (int i = 0; i < *sens_cnt; ++i) {
-        enum sensor_type type = 0;
-        fread(&type, sizeof(enum sensor_type), 1, data_f);
-        a_sensors[i].sensor_type = type;
+	for (int i = 0; i < *sens_cnt; ++i) {
+		enum sensor_type type = 0;
+		fread(&type, sizeof(enum sensor_type), 1, data_f);
+		a_sensors[i].sensor_type = type;
 
-        if (type == 1) {
-            power_management_unit *pmu = (power_management_unit *)calloc(1, sizeof(power_management_unit));
-            if (!pmu) {
-                fprintf(stderr, "calloc of pmu failed\n");
-                exit(-1);
-            }
+		if (type == 1) {
+			power_management_unit *pmu =
+			(power_management_unit *)calloc(1, sizeof(power_management_unit));
 
-            fread(pmu, sizeof(power_management_unit), 1, data_f);
-            a_sensors[i].sensor_data = pmu;
-        } else if (type == 0) {
-            tire_sensor *tire = (tire_sensor *)calloc(1, sizeof(tire_sensor));
-            if (!tire) {
-                fprintf(stderr, "tire alloc failed\n");
-                exit(-1);
-            }
+			if (!pmu) {
+				fprintf(stderr, "calloc of pmu failed\n");
+				exit(-1);
+			}
 
-            fread(tire, sizeof(tire_sensor), 1, data_f);
-            a_sensors[i].sensor_data = tire;
-        } else {
-            printf("unknown type\n");
-        }
+			fread(pmu, sizeof(power_management_unit), 1, data_f);
+			a_sensors[i].sensor_data = pmu;
+		} else if (type == 0) {
+			tire_sensor *tire = (tire_sensor *)calloc(1, sizeof(tire_sensor));
+			if (!tire) {
+				fprintf(stderr, "tire alloc failed\n");
+				exit(-1);
+			}
 
-        int nr_op = 0;
-        fread(&nr_op, sizeof(int), 1, data_f);
-        a_sensors[i].nr_operations = nr_op;
+			fread(tire, sizeof(tire_sensor), 1, data_f);
+			a_sensors[i].sensor_data = tire;
+		} else {
+			printf("unknown type\n");
+		}
 
-        a_sensors[i].operations_idxs = calloc(nr_op, sizeof(int));
-        if (!a_sensors[i].operations_idxs) {
-            fprintf(stderr, "op idxs alloc failend\n");
-            exit(-1);
-        }
+		int nr_op = 0;
+		fread(&nr_op, sizeof(int), 1, data_f);
+		a_sensors[i].nr_operations = nr_op;
 
-        fread(a_sensors[i].operations_idxs, sizeof(int), nr_op, data_f);
-    }
+		a_sensors[i].operations_idxs = calloc(nr_op, sizeof(int));
+		if (!a_sensors[i].operations_idxs) {
+			fprintf(stderr, "op idxs alloc failend\n");
+			exit(-1);
+		}
 
-    qsort(a_sensors, *sens_cnt, sizeof(sensor), cmp_enum);
+		fread(a_sensors[i].operations_idxs, sizeof(int), nr_op, data_f);
+	}
 
-    return a_sensors;
+	qsort(a_sensors, *sens_cnt, sizeof(sensor), cmp_enum);
+
+	return a_sensors;
 }
 
 int cmp_enum(const void *a, const void *b)
 {
-    const sensor *sens_a = (const sensor *)a;
-    const sensor *sens_b = (const sensor *)b;
+	const sensor *sens_a = (const sensor *)a;
+	const sensor *sens_b = (const sensor *)b;
 
-    if (sens_a->sensor_type < sens_b->sensor_type)
-        return 1;
-    else if (sens_a->sensor_type > sens_b->sensor_type)
-        return -1;
-    return 0;
+	if (sens_a->sensor_type < sens_b->sensor_type)
+		return 1;
+	else if (sens_a->sensor_type > sens_b->sensor_type)
+		return -1;
+	return 0;
 }

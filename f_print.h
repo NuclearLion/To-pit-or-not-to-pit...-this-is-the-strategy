@@ -12,5 +12,4 @@ void print_tire_sens(tire_sensor sens);
 
 void print_pmu_sens(power_management_unit sens);
 
-
 #endif

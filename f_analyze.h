@@ -8,8 +8,6 @@
 #include "structs.h"
 #include "operations.h"
 
-// typedef void (*func_ptr)(int);
-
 #define OP_CNT 8
 
 void analyze(sensor *a_sensors, int dim);

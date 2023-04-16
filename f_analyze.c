@@ -2,27 +2,27 @@
 
 void analyze(sensor *a_sensors, int dim)
 {
-    int index = 0;
-    scanf("%d", &index);
+	int index = 0;
+	scanf("%d", &index);
 
-    if (index >= dim || index < 0) {
-        printf("Index not in range!\n");
-        return;
-    }
+	if (index >= dim || index < 0) {
+		printf("Index not in range!\n");
+		return;
+	}
 
-    void (**operations)(void *) = (void (**)(void *))malloc(OP_CNT * sizeof(void (*)(void *)));
-    if (!operations) {
-        fprintf(stderr, "operations malloc failed\n");
-        exit(-1);
-    }
+	void (**operations)(void *) =
+	(void (**)(void *))malloc(OP_CNT * sizeof(void (*)(void *)));
+	if (!operations) {
+		fprintf(stderr, "operations malloc failed\n");
+		exit(-1);
+	}
 
-    get_operations((void **)operations);
+	get_operations((void **)operations);
 
-    sensor curr_sens = a_sensors[index];
+	sensor curr_sens = a_sensors[index];
 
-    for (int i = 0; i < curr_sens.nr_operations; ++i) {
-        operations[curr_sens.operations_idxs[i]](curr_sens.sensor_data);
-    }
+	for (int i = 0; i < curr_sens.nr_operations; ++i)
+		operations[curr_sens.operations_idxs[i]](curr_sens.sensor_data);
 
-    free(operations);
+	free(operations);
 }

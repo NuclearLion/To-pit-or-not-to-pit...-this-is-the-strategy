@@ -2,6 +2,7 @@
     "files.associations": {
         "f_print.h": "c",
         "structs.h": "c",
-        "operations.h": "c"
+        "operations.h": "c",
+        "free_all.h": "c"
     }
 }
