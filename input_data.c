@@ -42,11 +42,6 @@ sensor *read_data(FILE *data_f, int *sens_cnt)
         fread(&nr_op, sizeof(int), 1, data_f);
         a_sensors[i].nr_operations = nr_op;
 
-        // int *op_idxs = calloc(nr_op, sizeof(int));
-        // if (!op_idxs) {
-        //     fprintf(stderr, "op idxs alloc failend\n");
-        //     exit(-1);
-        // }
         a_sensors[i].operations_idxs = calloc(nr_op, sizeof(int));
         if (!a_sensors[i].operations_idxs) {
             fprintf(stderr, "op idxs alloc failend\n");

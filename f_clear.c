@@ -61,11 +61,11 @@ void remove_sensor(sensor **a_sensors, int *dim, int ind)
     if (ind < 0 || ind >= *dim)
         return;
 
+    free((*a_sensors)[ind].sensor_data);
+    free((*a_sensors)[ind].operations_idxs);
+
     for (int i = ind; i < *dim - 1; ++i)
         (*a_sensors)[i] = (*a_sensors)[i + 1];
-    
-    // free((*a_sensors)[*dim].sensor_data);
-    // free((*a_sensors)[*dim].operations_idxs);
 
     *dim -= 1;
 
@@ -74,9 +74,6 @@ void remove_sensor(sensor **a_sensors, int *dim, int ind)
         fprintf(stderr, "tmp realloc failed\n");
         return;
     }
-
-    // free((*a_sensors)[*dim].sensor_data);
-    // free((*a_sensors)[*dim].operations_idxs);
 
     *a_sensors = tmp;
 }
